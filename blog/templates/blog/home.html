@@ -6,11 +6,15 @@
     <title>home</title>
 </head>
 <body>
-    {% for post in posts %}
-        <article>
-            <h1>{{post.id}} - {{post.title}}</h1>
-            <p>{{post.body}}</p>
-        </article>
+    {% for article in articles %}
+        <center>
+            <article>
+                <img src="{{article.thumbnail.url}}" alt="" width="500" height="400">
+                <a href="{% url 'blog:detail' article.slug %}"><h1>{{article.title}}</h1></a>
+                <p>{{article.description}}</p>
+                <small>{{article.publish}}</small>
+            </article>
+        </center>
     {% endfor %}
 </body>
 </html>
