@@ -4,6 +4,21 @@ from extentions.utils import jalali_converter
 
 # Create your models here.
 
+class Category(models.Model):
+    title = models.CharField(max_length=200, verbose_name='عنوان دسته‌بندی')
+    slug = models.CharField(max_length=100, unique=True, verbose_name='آدرس دسته‌بندی')
+    status = models.BooleanField(default=True, verbose_name='آیا نمایش داده شود؟')
+    position = models.IntegerField(verbose_name='پوزیشن')
+    
+    class Meta:
+        verbose_name = 'دسته‌بندی'
+        verbose_name_plural = 'دسته‌بندی ها'
+        ordering = ['position']
+    
+    def __str__(self):
+        return self.title
+    
+
 class Article(models.Model):
     
     STATUS_CHOICES = (
@@ -13,6 +28,7 @@ class Article(models.Model):
     
     title = models.CharField(max_length=200, verbose_name='عنوان مقاله')
     slug = models.CharField(max_length=100, unique=True, verbose_name='آدرس مقاله')
+    category = models.ManyToManyField(Category, verbose_name='دسته‌بندی')
     description = models.TextField(verbose_name='محتوا')
     thumbnail = models.ImageField(upload_to="images", verbose_name='تصویر مقاله')
     publish = models.DateTimeField(default=timezone.now, verbose_name='زمان انتشار')
