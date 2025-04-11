@@ -39,7 +39,8 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'مقاله'
         verbose_name_plural = 'مقالات'
-    
+        ordering = ['-publish']
+            
     def __str__(self):
         return self.title
     
