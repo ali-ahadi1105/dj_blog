@@ -5,8 +5,7 @@ from .models import Article, Category
 
 def home(request):
     context = {
-        "articles": Article.objects.filter(status="p"),
-        "categories": Category.objects.filter(status=True)
+        "articles": Article.objects.filter(status="p")
     }
     return render(request, 'blog/home.html', context)
 
