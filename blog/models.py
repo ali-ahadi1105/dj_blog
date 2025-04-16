@@ -4,6 +4,11 @@ from extentions.utils import jalali_converter
 
 # Create your models here.
 
+# Write managers hear
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
+
 class Category(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان دسته‌بندی')
     slug = models.CharField(max_length=100, unique=True, verbose_name='آدرس دسته‌بندی')
@@ -51,3 +56,5 @@ class Article(models.Model):
     
     def category_published(self):
         return self.category.filter(status=True)
+    
+    objects = ArticleManager()
