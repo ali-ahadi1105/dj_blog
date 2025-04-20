@@ -22,3 +22,35 @@
   .post-meta {
     text-align: left;
   }
+
+.post-title {
+  font-size: 28px !important;
+}
+
+.post-subtitle {
+  font-size: 18px !important;
+}
+/* 
+.post-preview > a > .post-title {
+  font-size: 1.5rem !important;
+  margin-top: 1.875rem;
+  margin-bottom: 0.625rem;
+}
+
+@media (min-width: 992px) {
+  .post-preview > a > .post-title {
+    font-size: 1.5rem !important;
+  }
+} */
+
+@media (min-width: 992px) {
+  .post-preview > a > .post-title {
+    font-size: 1.8rem !important;
+  }
+}
+
+header.masthead .page-heading h1, header.masthead .page-heading .h1,
+header.masthead .site-heading h1,
+header.masthead .site-heading .h1 {
+  font-size: 3rem !important;
+}
