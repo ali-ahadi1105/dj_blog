@@ -10,6 +10,7 @@ class ArticleManager(models.Manager):
         return self.filter(status='p')
 
 class Category(models.Model):
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children', verbose_name='زیر دسته‌بندی')
     title = models.CharField(max_length=200, verbose_name='عنوان دسته‌بندی')
     slug = models.CharField(max_length=100, unique=True, verbose_name='آدرس دسته‌بندی')
     status = models.BooleanField(default=True, verbose_name='آیا نمایش داده شود؟')
@@ -18,7 +19,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'دسته‌بندی'
         verbose_name_plural = 'دسته‌بندی ها'
-        ordering = ['position']
+        ordering = ['parent__id', 'position']
     
     def __str__(self):
         return self.title
